@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Krudio 
+Exec=krudio %F
+Categories=AudioVideo;Player;GTK;
+Terminal=false
+Inherits=hicolor
+Type=Application
+Icon=krudio
