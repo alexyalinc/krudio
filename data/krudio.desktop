@@ -2,7 +2,6 @@
 Name=Krudio 
 Exec=krudio %F
 Categories=AudioVideo;Player;GTK;
-Terminal=false
-Inherits=hicolor
+Terminal=false 
 Type=Application
 Icon=krudio
