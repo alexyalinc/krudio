@@ -7,11 +7,11 @@ Radio tray for linux QT
 ![Screenshot](screenshots/theme.png)
 
 # install and run
-$ git clone https://github.com/loast/krudio.git
-$ cd krudio
-$ qmake
-$ make
-$ ./krudio
+- $ git clone https://github.com/loast/krudio.git
+- $ cd krudio
+- $ qmake
+- $ make
+- $ ./krudio
 
 # delete data
 $ rm ~/.krudio
