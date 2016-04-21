@@ -80,6 +80,7 @@ private slots:
 
     void on_radioButton_4_released();
 
+
 private:
     QTimer *ceckBUFFtimer;
     void refreshTable();

@@ -21,7 +21,8 @@ TEMPLATE = app
 SOURCES += main.cpp\
         krudio.cpp
 
-HEADERS  += krudio.h
+HEADERS  += krudio.h \
+    krudio.h
 
 FORMS    += krudio.ui
 

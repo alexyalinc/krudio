@@ -163,22 +163,48 @@ Krudio::~Krudio()
 void Krudio::setcolorIcon(int colorNumb,bool save){
     currentColorNumb=colorNumb;
     QString path;
-    if(currentsizeIcon==1){path=qApp->applicationDirPath()+"/"+"icons/32";}else{path=qApp->applicationDirPath()+"/"+"icons/16";}
-    if(colorNumb==0){
-        ui->radioButton_2->setChecked(true);
-        if(iconTrayEv){
-            trIcon->setIcon(QIcon(path+"/krudio-dark-on-tray"));  //устанавливаем иконкудля трея
-        }else{trIcon->setIcon(QIcon(path+"/krudio-dark-off-tray"));}
-        setWindowIcon(QIcon(path+"/krudio.svg"));
+    switch ( currentsizeIcon )
+          {
+             case 0:
+                path="16x16";
+                break;
+             case 1:
+                path="22x22";
+                break;
+             case 2:
+                path="24x24";
+                break;
+             case 3:
+                path="32x32";
+                break;
+             default:
+                path="16x16";
+          }
+    path="/usr/share/icons/hicolor/"+path+"/status/";
 
-    }else if(colorNumb==1){
-        ui->radioButton->setChecked(true);
-        if(iconTrayEv){
-            trIcon->setIcon(QIcon(path+"/krudio-light-on-tray"));  //устанавливаем иконкудля трея
-        }else{trIcon->setIcon(QIcon(path+"/krudio-light-off-tray"));}
-        setWindowIcon(QIcon(path+"/krudio.svg"));
-    }
-    if(save){
+   qDebug() <<  path;
+    switch ( colorNumb )
+          {
+            case 0://темная тема
+                {
+                    ui->radioButton_2->setChecked(true);
+                    if(iconTrayEv){
+                        trIcon->setIcon(QIcon::fromTheme("krudio-dark-on-tray",QIcon(path+"krudio-dark-on-tray.svg")));  //устанавливаем иконкудля трея
+                    }else{trIcon->setIcon(QIcon::fromTheme("krudio-dark-off-tray",QIcon(path+"krudio-dark-off-tray.svg")));} //плеер не играет
+                    break;
+                }
+            case 1://светлая тема
+                {
+                    ui->radioButton->setChecked(true);
+                    if(iconTrayEv){
+                        trIcon->setIcon(QIcon::fromTheme("krudio-light-on-tray",QIcon(path+"krudio-light-on-tray.svg")));  //устанавливаем иконкудля трея
+                    }else{trIcon->setIcon(QIcon::fromTheme("krudio-light-off-tray",QIcon(path+"krudio-light-off-tray.svg")));} //плеер не играет
+                    break;
+                }
+          }
+    setWindowIcon(QIcon::fromTheme("krudio",QIcon("/usr/share/icons/hicolor/48x48/apps/krudio.svg")));//иконка окна
+
+    if(save){//сохраняем изменения в базу
         QString str;
         QSqlQuery a_query;
         bool b;
@@ -500,6 +526,6 @@ void Krudio::on_radioButton_3_released()
 
 void Krudio::on_radioButton_4_released()
 {
-    setsizeIcon(1,true);
+    setsizeIcon(3,true);
     setcolorIcon(currentColorNumb,true);
 }
