@@ -8,13 +8,8 @@ Radio tray for linux QT
 
 # install and run
 - $ git clone https://github.com/loast/krudio.git
-- $ cd krudio
+- $ cd krudio/src
 - $ qmake
 - $ make
 - $ ./krudio
-
-# delete data
-$ rm ~/.krudio
-
-# data
-~/.krudio
+ 
