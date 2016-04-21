@@ -26,7 +26,8 @@
    <string>Krudio</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="radio"/>
+   <iconset theme="radio">
+    <normaloff>.</normaloff>.</iconset>
   </property>
   <property name="tabShape">
    <enum>QTabWidget::Rounded</enum>
@@ -88,9 +89,6 @@
      <bool>false</bool>
     </property>
     <property name="documentMode">
-     <bool>false</bool>
-    </property>
-    <property name="tabsClosable">
      <bool>false</bool>
     </property>
     <property name="movable">
