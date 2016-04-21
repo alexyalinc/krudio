@@ -76,10 +76,7 @@ private slots:
 
     void on_volumeChange_valueChanged(int value);
 
-    void on_radioButton_3_released();
-
-    void on_radioButton_4_released();
-
+    void on_horizontalSlider_valueChanged(int value);
 
 private:
     QTimer *ceckBUFFtimer;

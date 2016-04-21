@@ -74,7 +74,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <property name="iconSize">
      <size>
@@ -328,7 +328,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>30</y>
+        <y>10</y>
         <width>81</width>
         <height>17</height>
        </rect>
@@ -340,8 +340,8 @@
      <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
-        <x>110</x>
-        <y>30</y>
+        <x>10</x>
+        <y>80</y>
         <width>91</width>
         <height>17</height>
        </rect>
@@ -350,58 +350,13 @@
        <string>Размер иконок</string>
       </property>
      </widget>
-     <widget class="QGroupBox" name="groupBox">
-      <property name="geometry">
-       <rect>
-        <x>110</x>
-        <y>50</y>
-        <width>71</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string/>
-      </property>
-      <widget class="QRadioButton" name="radioButton_4">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>30</y>
-         <width>71</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>&amp;32x32</string>
-       </property>
-       <property name="checked">
-        <bool>false</bool>
-       </property>
-       <property name="autoExclusive">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <widget class="QRadioButton" name="radioButton_3">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>71</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>&amp;16x16</string>
-       </property>
-      </widget>
-     </widget>
      <widget class="QGroupBox" name="groupBox_2">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>50</y>
-        <width>81</width>
-        <height>61</height>
+        <y>40</y>
+        <width>191</width>
+        <height>21</height>
        </rect>
       </property>
       <property name="title">
@@ -423,8 +378,8 @@
       <widget class="QRadioButton" name="radioButton_2">
        <property name="geometry">
         <rect>
-         <x>0</x>
-         <y>30</y>
+         <x>110</x>
+         <y>0</y>
          <width>81</width>
          <height>22</height>
         </rect>
@@ -439,6 +394,19 @@
         <bool>true</bool>
        </property>
       </widget>
+     </widget>
+     <widget class="QSlider" name="horizontalSlider">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>110</y>
+        <width>191</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
      </widget>
     </widget>
    </widget>

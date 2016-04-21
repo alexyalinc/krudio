@@ -27,6 +27,7 @@ int  countRow;//Количество строк в таблице
 int  currentColorNumb;//Текущий цвет иконок
 int  currentsizeIcon;//Текущий размер значков
 int  blockNumb=0;
+int  slidersize=0;
 
 void Krudio::closeEvent( QCloseEvent *cb)
 {
@@ -218,8 +219,8 @@ void Krudio::setcolorIcon(int colorNumb,bool save){
 /*/////////////////////////////////РАЗМЕР ИКОНОК В ТРЕЕ///////////////////////////////////////*/
 void Krudio::setsizeIcon(int size,bool save){
     currentsizeIcon=size;
-    if(size==0){ui->radioButton_3->setChecked(true);}
-    else if(size==1){ui->radioButton_4->setChecked(true);}
+    //if(size==0){ui->radioButton_3->setChecked(true);}
+    //else if(size==1){ui->radioButton_4->setChecked(true);}
     if(save){
         QString str;
         QSqlQuery a_query;
@@ -496,7 +497,9 @@ void Krudio::on_tableWidget_clicked(const QModelIndex &index)
 
 void Krudio::on_tableWidget_doubleClicked(const QModelIndex &index)
 {
+
     blockNumb=0;
+    if(blockNumb!=0){qDebug () << index;}
     ceckBUFFtimer->setInterval(50);
     currPlayOrNextBack(0);
 }
@@ -518,14 +521,16 @@ void Krudio::on_volumeChange_valueChanged(int value)
     }
 }
 
-void Krudio::on_radioButton_3_released()
+void Krudio::on_horizontalSlider_valueChanged(int value)
 {
-    setsizeIcon(0,true);
-    setcolorIcon(currentColorNumb,true);
+    if(value == 0) {slidersize=0;}
+    if(value > 0) {slidersize=1;}
+    if(value > 33) {slidersize=2;}
+    if(value > 66) {slidersize=3;}
+
+    if(slidersize != currentsizeIcon) {
+        setsizeIcon(slidersize,true);
+        setcolorIcon(currentColorNumb,true);
+    }
 }
 
-void Krudio::on_radioButton_4_released()
-{
-    setsizeIcon(3,true);
-    setcolorIcon(currentColorNumb,true);
-}
