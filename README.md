@@ -11,5 +11,10 @@ Radio tray for linux QT
 - $ cd krudio/src
 - $ qmake
 - $ make
-- $ ./krudio
+- $ cd ..
+- $ sudo make install
+-
+- Run this app in menu or terminal
+-
+- $ krudio
  
