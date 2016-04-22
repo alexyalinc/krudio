@@ -74,7 +74,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <property name="iconSize">
      <size>
@@ -99,7 +99,7 @@
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="icon">
-      <iconset theme="go-next">
+      <iconset theme="arrow-down">
        <normaloff>.</normaloff>.</iconset>
      </attribute>
      <attribute name="title">
@@ -327,7 +327,7 @@
     </widget>
     <widget class="QWidget" name="tab_4">
      <attribute name="icon">
-      <iconset theme="view-preview">
+      <iconset theme="configure">
        <normaloff>.</normaloff>.</iconset>
      </attribute>
      <attribute name="title">
