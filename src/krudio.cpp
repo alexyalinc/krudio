@@ -59,16 +59,9 @@ Krudio::Krudio(QWidget *parent) :
     ui->waitMinute->hide();//Скрываем label загрузки буфера
     ceckBUFFtimer = new QTimer();//таймер для буферинга
     QDir(QDir::homePath()).mkdir(".krudio");
-    QFile file("/usr/share/applications/Krudio.desktop");
-    if (file.open(QIODevice::ReadWrite | QIODevice::Truncate)) {
-       file.write("[Desktop Entry]\nName=Krudio\nExec="+qApp->applicationDirPath().toLatin1()+"/krudio\nType=Application\nIcon="+qApp->applicationDirPath().toLatin1()+"/icons/16/krudio.svg\n");
-
-    }
-    file.close();
     //Иконка в трее
     trIcon = new QSystemTrayIcon();  //инициализируем объект
-    fullPath=qApp->applicationDirPath()+"/icons/16/krudio.svg";
-    trIcon->setIcon(QIcon(fullPath));  //устанавливаем иконку
+    trIcon->setIcon(QIcon::fromTheme("krudio",QIcon("/usr/share/icons/hicolor/48x48/apps/krudio.svg")));  //устанавливаем иконку
     trIcon->show();  //отображаем объект
     //При клике сворачивать или разворачивать окно
     connect(trIcon,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),this,SLOT(showHide(QSystemTrayIcon::ActivationReason)));
@@ -164,46 +157,46 @@ Krudio::~Krudio()
 void Krudio::setcolorIcon(int colorNumb,bool save){
     currentColorNumb=colorNumb;
     QString path;
+    QString namesvg;
     switch ( currentsizeIcon )
           {
              case 0:
                 path="16x16";
+                namesvg="16";
                 break;
              case 1:
                 path="22x22";
+                namesvg="22";
                 break;
              case 2:
                 path="24x24";
-                break;
-             case 3:
-                path="32x32";
+                namesvg="24";
                 break;
              default:
                 path="16x16";
+                namesvg="16";
           }
     path="/usr/share/icons/hicolor/"+path+"/status/";
 
-   qDebug() <<  path;
     switch ( colorNumb )
           {
             case 0://темная тема
                 {
                     ui->radioButton_2->setChecked(true);
                     if(iconTrayEv){
-                        trIcon->setIcon(QIcon::fromTheme("krudio-dark-on-tray",QIcon(path+"krudio-dark-on-tray.svg")));  //устанавливаем иконкудля трея
-                    }else{trIcon->setIcon(QIcon::fromTheme("krudio-dark-off-tray",QIcon(path+"krudio-dark-off-tray.svg")));} //плеер не играет
+                        trIcon->setIcon(QIcon::fromTheme("krudio-dark-on-tray"+namesvg,QIcon(path+"krudio-dark-on-tray"+namesvg+".svg")));  //устанавливаем иконкудля трея
+                    }else{trIcon->setIcon(QIcon::fromTheme("krudio-dark-off-tray"+namesvg,QIcon(path+"krudio-dark-off-tray"+namesvg+".svg")));} //плеер не играет
                     break;
                 }
             case 1://светлая тема
                 {
                     ui->radioButton->setChecked(true);
                     if(iconTrayEv){
-                        trIcon->setIcon(QIcon::fromTheme("krudio-light-on-tray",QIcon(path+"krudio-light-on-tray.svg")));  //устанавливаем иконкудля трея
-                    }else{trIcon->setIcon(QIcon::fromTheme("krudio-light-off-tray",QIcon(path+"krudio-light-off-tray.svg")));} //плеер не играет
+                        trIcon->setIcon(QIcon::fromTheme("krudio-light-on-tray"+namesvg,QIcon(path+"krudio-light-on-tray"+namesvg+".svg")));  //устанавливаем иконкудля трея
+                    }else{trIcon->setIcon(QIcon::fromTheme("krudio-light-off-tray"+namesvg,QIcon(path+"krudio-light-off-tray"+namesvg+".svg")));} //плеер не играет
                     break;
                 }
           }
-    setWindowIcon(QIcon::fromTheme("krudio",QIcon("/usr/share/icons/hicolor/48x48/apps/krudio.svg")));//иконка окна
 
     if(save){//сохраняем изменения в базу
         QString str;
@@ -225,12 +218,9 @@ void Krudio::setsizeIcon(int size,bool save){
                 ui->horizontalSlider->setValue(0);
                 break;
              case 1:
-                ui->horizontalSlider->setValue(33);
+                ui->horizontalSlider->setValue(50);
                 break;
              case 2:
-                ui->horizontalSlider->setValue(66);
-                break;
-             case 3:
                 ui->horizontalSlider->setValue(99);
                 break;
              default:
@@ -539,22 +529,18 @@ void Krudio::on_volumeChange_valueChanged(int value)
 
 void Krudio::on_horizontalSlider_valueChanged(int value)
 {
-    if(value <= 17) {slidersize=0;}
-    if(value <= 50 && value >= 17) {slidersize=1;}
-    if(value <= 83 && value >= 50) {slidersize=2;}
-    if(value <= 99 && value >= 83) {slidersize=3;}
+    if(value <= 25) {slidersize=0;}
+    if(value <= 75 && value >= 25) {slidersize=1;}
+    if(value <= 99 && value >= 75) {slidersize=2;}
     switch (slidersize)
           {
              case 0:
                 ui->horizontalSlider->setValue(0);
                 break;
              case 1:
-                ui->horizontalSlider->setValue(33);
+                ui->horizontalSlider->setValue(50);
                 break;
              case 2:
-                ui->horizontalSlider->setValue(66);
-                break;
-             case 3:
                 ui->horizontalSlider->setValue(99);
                 break;
              default:
