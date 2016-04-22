@@ -10,7 +10,8 @@ clean:
 ####### Install
 
 install:
-	cp -r data/icons/hicolor/* $(prefix)/share/icons/hicolor/
+	cp -r data/icons/hicolor/24x24/* $(prefix)/share/icons/hicolor/
+	cp -r data/icons/hicolor/48x48/* $(prefix)/share/icons/hicolor/
 	cp -r src/krudio /usr/bin/
 	cp -r data/krudio.desktop $(prefix)/share/applications/ 
 	install -Dm644 data/icons/hicolor/24x24/status/krudio-dark-off-tray.svg $(prefix)/share/icons/hicolor/24x24/status/krudio-dark-off-tray.svg
