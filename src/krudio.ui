@@ -108,10 +108,10 @@
      <widget class="QPushButton" name="prevPlay">
       <property name="geometry">
        <rect>
-        <x>2</x>
-        <y>60</y>
-        <width>41</width>
-        <height>29</height>
+        <x>0</x>
+        <y>110</y>
+        <width>40</width>
+        <height>30</height>
        </rect>
       </property>
       <property name="text">
@@ -125,10 +125,10 @@
      <widget class="QPushButton" name="pausePlay">
       <property name="geometry">
        <rect>
-        <x>65</x>
-        <y>43</y>
-        <width>80</width>
-        <height>60</height>
+        <x>40</x>
+        <y>110</y>
+        <width>40</width>
+        <height>30</height>
        </rect>
       </property>
       <property name="text">
@@ -140,18 +140,18 @@
       </property>
       <property name="iconSize">
        <size>
-        <width>36</width>
-        <height>36</height>
+        <width>24</width>
+        <height>24</height>
        </size>
       </property>
      </widget>
      <widget class="QPushButton" name="nextPlay">
       <property name="geometry">
        <rect>
-        <x>170</x>
-        <y>60</y>
+        <x>80</x>
+        <y>110</y>
         <width>40</width>
-        <height>29</height>
+        <height>30</height>
        </rect>
       </property>
       <property name="text">
@@ -165,10 +165,10 @@
      <widget class="QPushButton" name="pausePause">
       <property name="geometry">
        <rect>
-        <x>65</x>
-        <y>43</y>
-        <width>80</width>
-        <height>60</height>
+        <x>40</x>
+        <y>110</y>
+        <width>40</width>
+        <height>30</height>
        </rect>
       </property>
       <property name="text">
@@ -180,8 +180,8 @@
       </property>
       <property name="iconSize">
        <size>
-        <width>36</width>
-        <height>36</height>
+        <width>24</width>
+        <height>24</height>
        </size>
       </property>
      </widget>
@@ -189,10 +189,15 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-1</y>
+        <y>5</y>
         <width>211</width>
-        <height>31</height>
+        <height>16</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+       </font>
       </property>
       <property name="text">
        <string>Подождите минутку...</string>
@@ -200,13 +205,16 @@
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QSlider" name="volumeChange">
       <property name="geometry">
        <rect>
-        <x>19</x>
-        <y>120</y>
-        <width>181</width>
+        <x>129</x>
+        <y>115</y>
+        <width>81</width>
         <height>20</height>
        </rect>
       </property>
@@ -229,20 +237,29 @@
      <widget class="QLabel" name="label_5">
       <property name="geometry">
        <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>211</width>
-        <height>41</height>
+        <x>5</x>
+        <y>27</y>
+        <width>201</width>
+        <height>81</height>
        </rect>
       </property>
       <property name="text">
        <string/>
+      </property>
+      <property name="scaledContents">
+       <bool>false</bool>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="wordWrap">
        <bool>true</bool>
+      </property>
+      <property name="openExternalLinks">
+       <bool>true</bool>
+      </property>
+      <property name="textInteractionFlags">
+       <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
       </property>
      </widget>
      <zorder>pausePause</zorder>
@@ -361,7 +378,7 @@
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>81</width>
+        <width>191</width>
         <height>17</height>
        </rect>
       </property>
@@ -374,7 +391,7 @@
        <rect>
         <x>10</x>
         <y>80</y>
-        <width>91</width>
+        <width>191</width>
         <height>17</height>
        </rect>
       </property>
@@ -433,7 +450,7 @@
         <x>10</x>
         <y>110</y>
         <width>191</width>
-        <height>17</height>
+        <height>21</height>
        </rect>
       </property>
       <property name="orientation">

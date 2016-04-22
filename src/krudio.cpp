@@ -13,6 +13,7 @@
 QString baseName = "krudio.sqlite";//Имя базы
 QString tableStationsName = "stations";//Имя таблицы со станциями
 QString tableSettingName = "settings";//Имя таблицы с настройками
+QString metaDataTitle="";
 int curretPlay = 0;//Номер строки, котороя сейчас воспроизводится
 QMediaPlayer*player;//Плеер
 QTableWidgetItem *itemRow;//Headers
@@ -254,14 +255,12 @@ void Krudio::repeater(){
             itemRow = new QTableWidgetItem(">");
             ui->tableWidget->setVerticalHeaderItem(curretPlay,itemRow);
             ui->waitMinute->hide();
-            ui->label_5->show();
             chekBUFF=false;
             if(blockNumb==2){blockNumb=0;}else{blockNumb++;}
         }
     }else{
         chekBUFF=true;
         ui->waitMinute->show();
-        ui->label_5->hide();
         player->pause();
         itemRow = new QTableWidgetItem("~");
         ui->tableWidget->setVerticalHeaderItem(curretPlay,itemRow);
@@ -272,12 +271,19 @@ void Krudio::repeater(){
     //Показываем название трека
     if (player->isMetaDataAvailable())
     {
-        ui->label_5->setText(player->metaData(QMediaMetaData::Title).toString());
+        if(metaDataTitle != player->metaData(QMediaMetaData::Title).toString()){
+                      ui->label_5->setText(player->metaData(QMediaMetaData::Title).toString());
+                      if(player->metaData(QMediaMetaData::Title).toString()!=""){
+                          QString str1 =player->metaData(QMediaMetaData::Title).toString();
+                          QString str = "notify-send 'Сейчас играет' '"+str1+"'  -t 5000";
+                          QByteArray byteArray = str.toUtf8();
+                          char* data = byteArray.data();
+                          system(data);
+                      }
+                      metaDataTitle=player->metaData(QMediaMetaData::Title).toString();
+          }
     }
-    else
-    {
-        qDebug() << "No metadata.";
-    }
+
 
 }
 
@@ -311,7 +317,8 @@ void Krudio::refreshTable(){
             id = "";
     //Создаем столбецы в представлении
     ui->tableWidget->insertColumn(0);
-    itemRow = new QTableWidgetItem("Список станций");
+    itemRow = new QTableWidgetItem("");
+    ui->tableWidget->horizontalHeader()->hide();
     ui->tableWidget->setHorizontalHeaderItem(0,itemRow);
     ui->tableWidget->horizontalHeaderItem(0)->setTextAlignment(Qt::AlignLeft);
     ui->tableWidget->insertColumn(1);

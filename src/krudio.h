@@ -23,6 +23,8 @@
 #include <QEvent>
 #include <QCloseEvent>
 #include <QMediaMetaData>
+#include <string>
+#include <sstream>
 
 namespace Ui {
 class Krudio;
