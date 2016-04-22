@@ -22,6 +22,7 @@
 #include <QMenu>
 #include <QEvent>
 #include <QCloseEvent>
+#include <QMediaMetaData>
 
 namespace Ui {
 class Krudio;

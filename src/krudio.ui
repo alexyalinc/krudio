@@ -188,14 +188,17 @@
      <widget class="QLabel" name="waitMinute">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>10</y>
-        <width>131</width>
-        <height>20</height>
+        <x>0</x>
+        <y>-1</y>
+        <width>211</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
        <string>Подождите минутку...</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
      <widget class="QSlider" name="volumeChange">
@@ -223,12 +226,32 @@
        <enum>Qt::Horizontal</enum>
       </property>
      </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>211</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
      <zorder>pausePause</zorder>
      <zorder>prevPlay</zorder>
      <zorder>pausePlay</zorder>
      <zorder>nextPlay</zorder>
      <zorder>waitMinute</zorder>
      <zorder>volumeChange</zorder>
+     <zorder>label_5</zorder>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="icon">

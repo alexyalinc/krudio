@@ -254,12 +254,14 @@ void Krudio::repeater(){
             itemRow = new QTableWidgetItem(">");
             ui->tableWidget->setVerticalHeaderItem(curretPlay,itemRow);
             ui->waitMinute->hide();
+            ui->label_5->show();
             chekBUFF=false;
             if(blockNumb==2){blockNumb=0;}else{blockNumb++;}
         }
     }else{
         chekBUFF=true;
         ui->waitMinute->show();
+        ui->label_5->hide();
         player->pause();
         itemRow = new QTableWidgetItem("~");
         ui->tableWidget->setVerticalHeaderItem(curretPlay,itemRow);
@@ -267,7 +269,15 @@ void Krudio::repeater(){
         else if(blockNumb==2){ceckBUFFtimer->setInterval(10000);}
         else if(blockNumb==0){ceckBUFFtimer->setInterval(50);}
     }
-
+    //Показываем название трека
+    if (player->isMetaDataAvailable())
+    {
+        ui->label_5->setText(player->metaData(QMediaMetaData::Title).toString());
+    }
+    else
+    {
+        qDebug() << "No metadata.";
+    }
 
 }
 
