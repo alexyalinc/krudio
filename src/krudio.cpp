@@ -129,10 +129,10 @@ Krudio::Krudio(QWidget *parent) :
     QString str_insert;
     if(sizeIcon==-1){
         str_insert = "INSERT INTO "+tableSettingName+" (id, setting, value) VALUES (NULL, '%1', %2);";
-        str = str_insert.arg("iconsize").arg(1);//32
+        str = str_insert.arg("iconsize").arg(0);//32
         b = a_query.exec(str);
         if (!b) {qDebug() << "Данные не вставляются";}
-        currentsizeIcon=1;
+        currentsizeIcon=0;
     }
     else{
         setsizeIcon(sizeIcon,false);
@@ -219,8 +219,24 @@ void Krudio::setcolorIcon(int colorNumb,bool save){
 /*/////////////////////////////////РАЗМЕР ИКОНОК В ТРЕЕ///////////////////////////////////////*/
 void Krudio::setsizeIcon(int size,bool save){
     currentsizeIcon=size;
-    //if(size==0){ui->radioButton_3->setChecked(true);}
-    //else if(size==1){ui->radioButton_4->setChecked(true);}
+    switch (size)
+          {
+             case 0:
+                ui->horizontalSlider->setValue(0);
+                break;
+             case 1:
+                ui->horizontalSlider->setValue(33);
+                break;
+             case 2:
+                ui->horizontalSlider->setValue(66);
+                break;
+             case 3:
+                ui->horizontalSlider->setValue(99);
+                break;
+             default:
+                ui->horizontalSlider->setValue(0);
+          }
+
     if(save){
         QString str;
         QSqlQuery a_query;
@@ -523,11 +539,27 @@ void Krudio::on_volumeChange_valueChanged(int value)
 
 void Krudio::on_horizontalSlider_valueChanged(int value)
 {
-    if(value == 0) {slidersize=0;}
-    if(value > 0) {slidersize=1;}
-    if(value > 33) {slidersize=2;}
-    if(value > 66) {slidersize=3;}
-
+    if(value <= 17) {slidersize=0;}
+    if(value <= 50 && value >= 17) {slidersize=1;}
+    if(value <= 83 && value >= 50) {slidersize=2;}
+    if(value <= 99 && value >= 83) {slidersize=3;}
+    switch (slidersize)
+          {
+             case 0:
+                ui->horizontalSlider->setValue(0);
+                break;
+             case 1:
+                ui->horizontalSlider->setValue(33);
+                break;
+             case 2:
+                ui->horizontalSlider->setValue(66);
+                break;
+             case 3:
+                ui->horizontalSlider->setValue(99);
+                break;
+             default:
+                ui->horizontalSlider->setValue(0);
+          }
     if(slidersize != currentsizeIcon) {
         setsizeIcon(slidersize,true);
         setcolorIcon(currentColorNumb,true);
