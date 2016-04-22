@@ -198,6 +198,7 @@ void Krudio::setcolorIcon(int colorNumb,bool save){
                 }
           }
 
+    setWindowIcon(QIcon::fromTheme("krudio",QIcon("/usr/share/icons/hicolor/48x48/apps/krudio.svg")));//иконка окна
     if(save){//сохраняем изменения в базу
         QString str;
         QSqlQuery a_query;

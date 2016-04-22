@@ -45,22 +45,6 @@ uninstall:
 	rm /usr/share/icons/hicolor/24x24/status/krudio-dark-on-tray24.svg
 	rm /usr/share/icons/hicolor/24x24/status/krudio-light-off-tray24.svg
 	rm /usr/share/icons/hicolor/24x24/status/krudio-light-on-tray24.svg
-	rm /usr/share/icons/hicolor/16x16/status/krudio-dark-off-tray.svg
-	rm /usr/share/icons/hicolor/16x16/status/krudio-dark-on-tray.svg
-	rm /usr/share/icons/hicolor/16x16/status/krudio-light-off-tray.svg
-	rm /usr/share/icons/hicolor/16x16/status/krudio-light-on-tray.svg
-	rm /usr/share/icons/hicolor/22x22/status/krudio-dark-off-tray.svg
-	rm /usr/share/icons/hicolor/22x22/status/krudio-dark-on-tray.svg
-	rm /usr/share/icons/hicolor/22x22/status/krudio-light-off-tray.svg
-	rm /usr/share/icons/hicolor/22x22/status/krudio-light-on-tray.svg
-	rm /usr/share/icons/hicolor/24x24/status/krudio-dark-off-tray.svg
-	rm /usr/share/icons/hicolor/24x24/status/krudio-dark-on-tray.svg
-	rm /usr/share/icons/hicolor/24x24/status/krudio-light-off-tray.svg
-	rm /usr/share/icons/hicolor/24x24/status/krudio-light-on-tray.svg
-	rm /usr/share/icons/hicolor/32x32/status/krudio-dark-off-tray.svg
-	rm /usr/share/icons/hicolor/32x32/status/krudio-dark-on-tray.svg
-	rm /usr/share/icons/hicolor/32x32/status/krudio-light-off-tray.svg
-	rm /usr/share/icons/hicolor/32x32/status/krudio-light-on-tray.svg
 	rm /usr/share/icons/hicolor/48x48/apps/krudio.svg
 	rm /usr/share/applications/krudio.desktop
 	rm /usr/bin/krudio
