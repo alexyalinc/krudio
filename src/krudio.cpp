@@ -13,7 +13,7 @@
 QString baseName = "krudio.sqlite";//Имя базы
 QString tableStationsName = "stations";//Имя таблицы со станциями
 QString tableSettingName = "settings";//Имя таблицы с настройками
-QString metaDataTitle="";
+QString metaDataTitle="Название трека";
 int curretPlay = 0;//Номер строки, котороя сейчас воспроизводится
 QMediaPlayer*player;//Плеер
 QTableWidgetItem *itemRow;//Headers
@@ -579,7 +579,7 @@ void Krudio::on_horizontalSlider_valueChanged(int value)
 void Krudio::on_nextPlay_2_clicked()
 {
     if(metaDataTitle != "Название трека"){
-        QString link = "https://www.google.ru/search?hl=ru&q="+metaDataTitle+"&btnG=%D0%9F%D0%BE%D0%B8%D1%81%D0%BA+%D0%B2+Google&lr=&gws_rd=ssl";
+        QString link = "https://www.google.ru/search?q="+metaDataTitle;
         QDesktopServices::openUrl(QUrl(link));
     }
 }
