@@ -7,19 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>250</width>
-    <height>342</height>
+    <height>328</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>250</width>
-    <height>342</height>
+    <height>328</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>250</width>
-    <height>342</height>
+    <height>328</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -39,8 +39,11 @@
       <x>0</x>
       <y>0</y>
       <width>250</width>
-      <height>192</height>
+      <height>182</height>
      </rect>
+    </property>
+    <property name="lineWidth">
+     <number>0</number>
     </property>
     <property name="selectionMode">
      <enum>QAbstractItemView::ExtendedSelection</enum>
@@ -53,7 +56,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>192</y>
+      <y>179</y>
       <width>250</width>
       <height>150</height>
      </rect>
@@ -108,8 +111,8 @@
      <widget class="QPushButton" name="prevPlay">
       <property name="geometry">
        <rect>
-        <x>0</x>
-        <y>110</y>
+        <x>5</x>
+        <y>80</y>
         <width>40</width>
         <height>30</height>
        </rect>
@@ -125,8 +128,8 @@
      <widget class="QPushButton" name="pausePlay">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>110</y>
+        <x>60</x>
+        <y>80</y>
         <width>40</width>
         <height>30</height>
        </rect>
@@ -148,8 +151,8 @@
      <widget class="QPushButton" name="nextPlay">
       <property name="geometry">
        <rect>
-        <x>80</x>
-        <y>110</y>
+        <x>115</x>
+        <y>80</y>
         <width>40</width>
         <height>30</height>
        </rect>
@@ -165,8 +168,8 @@
      <widget class="QPushButton" name="pausePause">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>110</y>
+        <x>60</x>
+        <y>80</y>
         <width>40</width>
         <height>30</height>
        </rect>
@@ -189,7 +192,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>5</y>
+        <y>123</y>
         <width>211</width>
         <height>16</height>
        </rect>
@@ -212,10 +215,10 @@
      <widget class="QSlider" name="volumeChange">
       <property name="geometry">
        <rect>
-        <x>129</x>
-        <y>115</y>
-        <width>81</width>
-        <height>20</height>
+        <x>0</x>
+        <y>120</y>
+        <width>211</width>
+        <height>21</height>
        </rect>
       </property>
       <property name="singleStep">
@@ -238,13 +241,13 @@
       <property name="geometry">
        <rect>
         <x>5</x>
-        <y>27</y>
+        <y>3</y>
         <width>201</width>
-        <height>81</height>
+        <height>71</height>
        </rect>
       </property>
       <property name="text">
-       <string/>
+       <string>Название трека</string>
       </property>
       <property name="scaledContents">
        <bool>false</bool>
@@ -259,16 +262,34 @@
        <bool>true</bool>
       </property>
       <property name="textInteractionFlags">
-       <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+       <set>Qt::NoTextInteraction</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="nextPlay_2">
+      <property name="geometry">
+       <rect>
+        <x>167</x>
+        <y>80</y>
+        <width>40</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset theme="search">
+        <normaloff>.</normaloff>.</iconset>
       </property>
      </widget>
      <zorder>pausePause</zorder>
      <zorder>prevPlay</zorder>
      <zorder>pausePlay</zorder>
      <zorder>nextPlay</zorder>
-     <zorder>waitMinute</zorder>
-     <zorder>volumeChange</zorder>
      <zorder>label_5</zorder>
+     <zorder>volumeChange</zorder>
+     <zorder>nextPlay_2</zorder>
+     <zorder>waitMinute</zorder>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="icon">
@@ -330,7 +351,7 @@
         <x>10</x>
         <y>115</y>
         <width>85</width>
-        <height>29</height>
+        <height>25</height>
        </rect>
       </property>
       <property name="text">
@@ -353,7 +374,7 @@
         <x>117</x>
         <y>115</y>
         <width>85</width>
-        <height>29</height>
+        <height>25</height>
        </rect>
       </property>
       <property name="text">
@@ -399,57 +420,12 @@
        <string>Размер иконок</string>
       </property>
      </widget>
-     <widget class="QGroupBox" name="groupBox_2">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>40</y>
-        <width>191</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string/>
-      </property>
-      <widget class="QRadioButton" name="radioButton">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>81</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Светлая</string>
-       </property>
-      </widget>
-      <widget class="QRadioButton" name="radioButton_2">
-       <property name="geometry">
-        <rect>
-         <x>110</x>
-         <y>0</y>
-         <width>81</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Темная</string>
-       </property>
-       <property name="checked">
-        <bool>false</bool>
-       </property>
-       <property name="autoExclusive">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </widget>
      <widget class="QSlider" name="horizontalSlider">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>13</x>
         <y>110</y>
-        <width>191</width>
+        <width>188</width>
         <height>21</height>
        </rect>
       </property>
@@ -463,6 +439,45 @@
        <bool>false</bool>
       </property>
      </widget>
+     <widget class="QRadioButton" name="radioButton">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>81</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Светлая</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="radioButton_2">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>40</y>
+        <width>81</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Темная</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="autoExclusive">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <zorder>label_3</zorder>
+     <zorder>label_4</zorder>
+     <zorder>horizontalSlider</zorder>
+     <zorder>radioButton_2</zorder>
+     <zorder>radioButton</zorder>
+     <zorder>radioButton</zorder>
+     <zorder>radioButton_2</zorder>
     </widget>
    </widget>
   </widget>

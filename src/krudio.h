@@ -23,6 +23,7 @@
 #include <QEvent>
 #include <QCloseEvent>
 #include <QMediaMetaData>
+#include <QDesktopServices>
 #include <string>
 #include <sstream>
 
@@ -80,6 +81,8 @@ private slots:
     void on_volumeChange_valueChanged(int value);
 
     void on_horizontalSlider_valueChanged(int value);
+
+    void on_nextPlay_2_clicked();
 
 private:
     QTimer *ceckBUFFtimer;

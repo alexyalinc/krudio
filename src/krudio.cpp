@@ -57,6 +57,7 @@ Krudio::Krudio(QWidget *parent) :
     ui(new Ui::Krudio)
 {
     ui->setupUi(this);
+    ui->pausePause->hide();//скрываем кнопку паузы
     ui->waitMinute->hide();//Скрываем label загрузки буфера
     ceckBUFFtimer = new QTimer();//таймер для буферинга
     QDir(QDir::homePath()).mkdir(".krudio");
@@ -255,12 +256,14 @@ void Krudio::repeater(){
             itemRow = new QTableWidgetItem(">");
             ui->tableWidget->setVerticalHeaderItem(curretPlay,itemRow);
             ui->waitMinute->hide();
+            ui->volumeChange->show();
             chekBUFF=false;
             if(blockNumb==2){blockNumb=0;}else{blockNumb++;}
         }
     }else{
         chekBUFF=true;
         ui->waitMinute->show();
+        ui->volumeChange->hide();
         player->pause();
         itemRow = new QTableWidgetItem("~");
         ui->tableWidget->setVerticalHeaderItem(curretPlay,itemRow);
@@ -279,6 +282,8 @@ void Krudio::repeater(){
                           QByteArray byteArray = str.toUtf8();
                           char* data = byteArray.data();
                           system(data);
+                      }else {
+                          ui->label_5->setText("Название трека");
                       }
                       metaDataTitle=player->metaData(QMediaMetaData::Title).toString();
           }
@@ -570,3 +575,11 @@ void Krudio::on_horizontalSlider_valueChanged(int value)
     }
 }
 
+
+void Krudio::on_nextPlay_2_clicked()
+{
+    if(metaDataTitle != "Название трека"){
+        QString link = "https://www.google.ru/search?hl=ru&q="+metaDataTitle+"&btnG=%D0%9F%D0%BE%D0%B8%D1%81%D0%BA+%D0%B2+Google&lr=&gws_rd=ssl";
+        QDesktopServices::openUrl(QUrl(link));
+    }
+}
