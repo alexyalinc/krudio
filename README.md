@@ -1,5 +1,5 @@
 # krudio
-Radio tray for linux QT
+Radio tray for linux on QT
 
 # Screenshots
 ![Screenshot](screenshots/play.png)
@@ -8,10 +8,8 @@ Radio tray for linux QT
 
 # Install and run
 - $ git clone https://github.com/loast/krudio.git
-- $ cd krudio/src
-- $ qmake
+- $ cd krudio
 - $ make
-- $ cd ..
 - $ sudo make install
 
 # Run this app in menu or terminal
