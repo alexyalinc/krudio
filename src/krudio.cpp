@@ -409,6 +409,7 @@ void Krudio::currPlayOrNextBack(int check){
         connect(ceckBUFFtimer,SIGNAL(timeout()),SLOT(repeater())) ;
     }
     if(check==0){//Play/Pause
+        blockNumb=0;
         PP=true;
     }
     if(check==1){//Next
