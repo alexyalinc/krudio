@@ -49,6 +49,7 @@ void Krudio::closeEV(){
     close();
 }
 
+
 /*////////////////////////////////////////////Start program//////////////////////////////////////////////*/
 /*////////////////////////////////////////////Start program//////////////////////////////////////////////*/
 /*////////////////////////////////////////////Start program//////////////////////////////////////////////*/
@@ -57,13 +58,47 @@ Krudio::Krudio(QWidget *parent) :
     ui(new Ui::Krudio)
 {
     ui->setupUi(this);
+    //поворачиваем иконки табов
+    QIcon icon = QIcon::fromTheme("media-playback-start",QIcon("/usr/share/krudio/icons/arrow-right.svg")); // use your method to retrieve the QIcon object
+    QImage srcImg(icon.pixmap(22,22).toImage());
+    QPoint center = srcImg.rect().center();
+    QMatrix matrix;
+    matrix.translate(center.x(), center.y());
+    matrix.rotate(90);
+    QImage dstImg = srcImg.transformed(matrix);
+    QPixmap dstPix = QPixmap::fromImage(dstImg);
+    ui->tabWidget->setTabIcon(0,QIcon(dstPix));
+
+    icon = QIcon::fromTheme("add",QIcon("/usr/share/krudio/icons/document-edit.svg")); // use your method to retrieve the QIcon object
+    QImage srcImg2(icon.pixmap(22,22).toImage());
+    center = srcImg2.rect().center();
+    dstImg = srcImg2.transformed(matrix);
+    dstPix = QPixmap::fromImage(dstImg);
+    ui->tabWidget->setTabIcon(1,QIcon(dstPix));
+
+    icon = QIcon::fromTheme("emblem-system-symbolic",QIcon("/usr/share/krudio/icons/configure.svg")); // use your method to retrieve the QIcon object
+    QImage srcImg3(icon.pixmap(22,22).toImage());
+    center = srcImg3.rect().center();
+    dstImg = srcImg3.transformed(matrix);
+    dstPix = QPixmap::fromImage(dstImg);
+
+    //Меняем иконки
+    ui->pausePlay->setIcon(QIcon::fromTheme("media-playback-start",QIcon("/usr/share/krudio/icons/media-playback-start.svg")));
+    ui->pausePause->setIcon(QIcon::fromTheme("media-playback-pause",QIcon("/usr/share/krudio/icons/media-playback-pause.svg")));
+    ui->prevPlay->setIcon(QIcon::fromTheme("media-skip-backward",QIcon("/usr/share/krudio/icons/media-skip-backward.svg")));
+    ui->nextPlay->setIcon(QIcon::fromTheme("media-skip-forward",QIcon("/usr/share/krudio/icons/media-skip-forward.svg")));
+    ui->nextPlay_2->setIcon(QIcon::fromTheme("system-search",QIcon("/usr/share/krudio/icons/search.svg")));
+    ui->pushButton_2->setIcon(QIcon::fromTheme("emblem-ok-symbolic",QIcon("/usr/share/krudio/icons/dialog-ok-apply.svg")));
+    ui->pushButton_3->setIcon(QIcon::fromTheme("edit-delete",QIcon("/usr/share/krudio/icons/edit-delete.svg")));
+
+    ui->tabWidget->setTabIcon(2,QIcon(dstPix));
     ui->pausePause->hide();//скрываем кнопку паузы
     ui->waitMinute->hide();//Скрываем label загрузки буфера
     ceckBUFFtimer = new QTimer();//таймер для буферинга
     QDir(QDir::homePath()).mkdir(".krudio");
     //Иконка в трее
     trIcon = new QSystemTrayIcon();  //инициализируем объект
-    trIcon->setIcon(QIcon::fromTheme("krudio",QIcon(":/src/icons/48x48/apps/krudio.svg")));  //устанавливаем иконку
+    trIcon->setIcon(QIcon::fromTheme("krudio",QIcon("/usr/share/krudio/icons/krudio.svg")));  //устанавливаем иконку
     trIcon->show();  //отображаем объект
     //При клике сворачивать или разворачивать окно
     connect(trIcon,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),this,SLOT(showHide(QSystemTrayIcon::ActivationReason)));
@@ -163,30 +198,25 @@ void Krudio::setcolorIcon(int colorNumb,bool save){
     switch ( currentsizeIcon )
           {
              case 0:
-                path="16x16";
                 namesvg="16";
                 break;
              case 1:
-                path="22x22";
                 namesvg="22";
                 break;
              case 2:
-                path="24x24";
                 namesvg="24";
                 break;
              default:
-                path="16x16";
                 namesvg="16";
           }
-    path=":/src/icons/"+path+"/status/";
-
+    path="/usr/share/krudio/icons/";
     switch ( colorNumb )
           {
             case 0://темная тема
                 {
                     ui->radioButton_2->setChecked(true);
                     if(iconTrayEv){
-                        trIcon->setIcon(QIcon::fromTheme("krudio-dark-on-tray"+namesvg,QIcon(path+"krudio-dark-on-tray"+namesvg+".svg")));  //устанавливаем иконкудля трея
+                        trIcon->setIcon(QIcon::fromTheme("krudio-dark-on-tray"+namesvg,QIcon(path+"krudio-dark-on-tray"+namesvg+".svg"))); //устанавливаем иконкудля трея
                     }else{trIcon->setIcon(QIcon::fromTheme("krudio-dark-off-tray"+namesvg,QIcon(path+"krudio-dark-off-tray"+namesvg+".svg")));} //плеер не играет
                     break;
                 }
@@ -200,7 +230,7 @@ void Krudio::setcolorIcon(int colorNumb,bool save){
                 }
           }
 
-    setWindowIcon(QIcon::fromTheme("krudio",QIcon(":/src/icons/48x48/apps/krudio.svg")));//иконка окна
+    setWindowIcon(QIcon::fromTheme("krudio",QIcon(path+"krudio.svg")));//иконка окна
     if(save){//сохраняем изменения в базу
         QString str;
         QSqlQuery a_query;

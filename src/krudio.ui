@@ -81,8 +81,8 @@
     </property>
     <property name="iconSize">
      <size>
-      <width>16</width>
-      <height>16</height>
+      <width>22</width>
+      <height>22</height>
      </size>
     </property>
     <property name="elideMode">
@@ -102,7 +102,7 @@
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="icon">
-      <iconset theme="arrow-down">
+      <iconset theme="next">
        <normaloff>.</normaloff>.</iconset>
      </attribute>
      <attribute name="title">
@@ -278,7 +278,7 @@
        <string/>
       </property>
       <property name="icon">
-       <iconset theme="search">
+       <iconset theme="system-search">
         <normaloff>.</normaloff>.</iconset>
       </property>
      </widget>
@@ -293,7 +293,7 @@
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="icon">
-      <iconset theme="document-edit">
+      <iconset theme="edit-select-all">
        <normaloff>.</normaloff>.</iconset>
      </attribute>
      <attribute name="title">
@@ -358,7 +358,7 @@
        <string/>
       </property>
       <property name="icon">
-       <iconset theme="dialog-ok-apply">
+       <iconset theme="emblem-ok-symbolic">
         <normaloff>.</normaloff>.</iconset>
       </property>
       <property name="iconSize">
@@ -471,13 +471,6 @@
        <bool>true</bool>
       </property>
      </widget>
-     <zorder>label_3</zorder>
-     <zorder>label_4</zorder>
-     <zorder>horizontalSlider</zorder>
-     <zorder>radioButton_2</zorder>
-     <zorder>radioButton</zorder>
-     <zorder>radioButton</zorder>
-     <zorder>radioButton_2</zorder>
     </widget>
    </widget>
   </widget>

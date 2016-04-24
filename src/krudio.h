@@ -24,6 +24,7 @@
 #include <QCloseEvent>
 #include <QMediaMetaData>
 #include <QDesktopServices>
+#include <QPainter>
 #include <string>
 #include <sstream>
 
