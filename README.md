@@ -6,6 +6,9 @@ Radio tray for linux on QT
 ![Screenshot](screenshots/add.png)
 ![Screenshot](screenshots/theme.png)
 
+# Install from AUR
+- $ yaourt -S krudio-git
+
 # Install and run
 - $ git clone https://github.com/loast/krudio.git
 - $ cd krudio
