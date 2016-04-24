@@ -25,7 +25,19 @@
 #include <QMediaMetaData>
 #include <QDesktopServices>
 #include <string>
+
+#include <iostream>
 #include <sstream>
+#include <fstream>
+
+#include "coverart/CoverArt.h"
+#include "coverart/ReleaseInfo.h"
+#include "coverart/ImageList.h"
+#include "coverart/Image.h"
+#include "coverart/Thumbnails.h"
+#include "coverart/HTTPFetch.h"
+#include "coverart/TypeList.h"
+#include "coverart/Type.h"
 
 namespace Ui {
 class Krudio;

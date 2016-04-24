@@ -63,7 +63,7 @@ Krudio::Krudio(QWidget *parent) :
     QDir(QDir::homePath()).mkdir(".krudio");
     //Иконка в трее
     trIcon = new QSystemTrayIcon();  //инициализируем объект
-    trIcon->setIcon(QIcon::fromTheme("krudio",QIcon("/usr/share/icons/hicolor/48x48/apps/krudio.svg")));  //устанавливаем иконку
+    trIcon->setIcon(QIcon::fromTheme("krudio",QIcon(":/src/icons/48x48/apps/krudio.svg")));  //устанавливаем иконку
     trIcon->show();  //отображаем объект
     //При клике сворачивать или разворачивать окно
     connect(trIcon,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),this,SLOT(showHide(QSystemTrayIcon::ActivationReason)));
@@ -178,7 +178,7 @@ void Krudio::setcolorIcon(int colorNumb,bool save){
                 path="16x16";
                 namesvg="16";
           }
-    path="/usr/share/icons/hicolor/"+path+"/status/";
+    path=":/src/icons/"+path+"/status/";
 
     switch ( colorNumb )
           {
@@ -200,7 +200,7 @@ void Krudio::setcolorIcon(int colorNumb,bool save){
                 }
           }
 
-    setWindowIcon(QIcon::fromTheme("krudio",QIcon("/usr/share/icons/hicolor/48x48/apps/krudio.svg")));//иконка окна
+    setWindowIcon(QIcon::fromTheme("krudio",QIcon(":/src/icons/48x48/apps/krudio.svg")));//иконка окна
     if(save){//сохраняем изменения в базу
         QString str;
         QSqlQuery a_query;

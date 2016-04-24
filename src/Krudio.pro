@@ -28,6 +28,7 @@ FORMS    += krudio.ui
 
 DISTFILES +=
 
-RESOURCES +=
+RESOURCES += \
+    krudio.qrc
 
 
