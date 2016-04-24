@@ -1,4 +1,6 @@
 prefix	?= /usr
+bindir := $(prefix)/bin
+datadir := $(prefix)/share
 
 all:
 	cd src && qmake 
@@ -10,13 +12,16 @@ clean:
 ####### Install
 
 install:
-	install -Dm755 src/icons/48x48/apps/krudio.svg $(prefix)/share/icons/hicolor/48x48/apps/krudio.svg
-	install -Dm755 src/krudio $(prefix)/bin/krudio
-	install -Dm755 data/krudio.desktop $(prefix)/share/applications/krudio.desktop
+	mkdir -p $(datadir)/krudio/icons
+	install -Dm644 src/data/icons/krudio.svg $(datadir)/icons/hicolor/48x48/apps/krudio.svg
+	install -Dm644 src/data/icons/*.svg $(datadir)/krudio/icons
+	install -Dm755 src/data/krudio.desktop $(datadir)/applications/krudio.desktop
+	install -Dm755 src/krudio $(bindir)/krudio
 
 uninstall: 
-	rm $(prefix)/share/icons/hicolor/48x48/apps/krudio.svg
-	rm $(prefix)/share/applications/krudio.desktop
-	rm $(prefix)/bin/krudio
+	rm -rf $(datadir)/krudio
+	rm $(datadir)/icons/hicolor/48x48/apps/krudio.svg
+	rm $(datadir)/applications/krudio.desktop
+	rm $(bindir)/krudio
 
 FORCE:
