@@ -59,7 +59,7 @@ Krudio::Krudio(QWidget *parent) :
 {
     ui->setupUi(this);
     //поворачиваем иконки табов
-    QIcon icon = QIcon::fromTheme("media-playback-start",QIcon("/usr/share/krudio/icons/arrow-right.svg")); // use your method to retrieve the QIcon object
+    QIcon icon = QIcon::fromTheme("arrow-right",QIcon("/usr/share/krudio/icons/arrow-right.svg")); // use your method to retrieve the QIcon object
     QImage srcImg(icon.pixmap(22,22).toImage());
     QPoint center = srcImg.rect().center();
     QMatrix matrix;
@@ -69,14 +69,14 @@ Krudio::Krudio(QWidget *parent) :
     QPixmap dstPix = QPixmap::fromImage(dstImg);
     ui->tabWidget->setTabIcon(0,QIcon(dstPix));
 
-    icon = QIcon::fromTheme("add",QIcon("/usr/share/krudio/icons/document-edit.svg")); // use your method to retrieve the QIcon object
+    icon = QIcon::fromTheme("document-edit",QIcon("/usr/share/krudio/icons/document-edit.svg")); // use your method to retrieve the QIcon object
     QImage srcImg2(icon.pixmap(22,22).toImage());
     center = srcImg2.rect().center();
     dstImg = srcImg2.transformed(matrix);
     dstPix = QPixmap::fromImage(dstImg);
     ui->tabWidget->setTabIcon(1,QIcon(dstPix));
 
-    icon = QIcon::fromTheme("emblem-system-symbolic",QIcon("/usr/share/krudio/icons/configure.svg")); // use your method to retrieve the QIcon object
+    icon = QIcon::fromTheme("configure",QIcon("/usr/share/krudio/icons/configure.svg")); // use your method to retrieve the QIcon object
     QImage srcImg3(icon.pixmap(22,22).toImage());
     center = srcImg3.rect().center();
     dstImg = srcImg3.transformed(matrix);
@@ -87,8 +87,8 @@ Krudio::Krudio(QWidget *parent) :
     ui->pausePause->setIcon(QIcon::fromTheme("media-playback-pause",QIcon("/usr/share/krudio/icons/media-playback-pause.svg")));
     ui->prevPlay->setIcon(QIcon::fromTheme("media-skip-backward",QIcon("/usr/share/krudio/icons/media-skip-backward.svg")));
     ui->nextPlay->setIcon(QIcon::fromTheme("media-skip-forward",QIcon("/usr/share/krudio/icons/media-skip-forward.svg")));
-    ui->nextPlay_2->setIcon(QIcon::fromTheme("system-search",QIcon("/usr/share/krudio/icons/search.svg")));
-    ui->pushButton_2->setIcon(QIcon::fromTheme("emblem-ok-symbolic",QIcon("/usr/share/krudio/icons/dialog-ok-apply.svg")));
+    ui->nextPlay_2->setIcon(QIcon::fromTheme("search",QIcon("/usr/share/krudio/icons/search.svg")));
+    ui->pushButton_2->setIcon(QIcon::fromTheme("dialog-ok-apply",QIcon("/usr/share/krudio/icons/dialog-ok-apply.svg")));
     ui->pushButton_3->setIcon(QIcon::fromTheme("edit-delete",QIcon("/usr/share/krudio/icons/edit-delete.svg")));
 
     ui->tabWidget->setTabIcon(2,QIcon(dstPix));

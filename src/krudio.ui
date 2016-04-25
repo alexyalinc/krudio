@@ -278,7 +278,7 @@
        <string/>
       </property>
       <property name="icon">
-       <iconset theme="system-search">
+       <iconset theme="search">
         <normaloff>.</normaloff>.</iconset>
       </property>
      </widget>
@@ -358,7 +358,7 @@
        <string/>
       </property>
       <property name="icon">
-       <iconset theme="emblem-ok-symbolic">
+       <iconset theme="dialog-ok-apply">
         <normaloff>.</normaloff>.</iconset>
       </property>
       <property name="iconSize">
