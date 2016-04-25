@@ -98,8 +98,6 @@ Krudio::Krudio(QWidget *parent) :
     QDir(QDir::homePath()).mkdir(".krudio");
     //Иконка в трее
     trIcon = new QSystemTrayIcon();  //инициализируем объект
-    trIcon->setIcon(QIcon::fromTheme("krudio",QIcon("/usr/share/krudio/icons/krudio.svg")));  //устанавливаем иконку
-    trIcon->show();  //отображаем объект
     //При клике сворачивать или разворачивать окно
     connect(trIcon,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),this,SLOT(showHide(QSystemTrayIcon::ActivationReason)));
     //Создаем контекстное меню для иконки в трее, чтобы закрывать программу
@@ -216,20 +214,21 @@ void Krudio::setcolorIcon(int colorNumb,bool save){
                 {
                     ui->radioButton_2->setChecked(true);
                     if(iconTrayEv){
-                        trIcon->setIcon(QIcon::fromTheme("krudio-dark-on-tray"+namesvg,QIcon(path+"krudio-dark-on-tray"+namesvg+".svg"))); //устанавливаем иконкудля трея
-                    }else{trIcon->setIcon(QIcon::fromTheme("krudio-dark-off-tray"+namesvg,QIcon(path+"krudio-dark-off-tray"+namesvg+".svg")));} //плеер не играет
+                        trIcon->setIcon(QIcon::fromTheme("krudiotray-dark-on"+namesvg,QIcon(path+"krudiotray-dark-on"+namesvg+".svg"))); //устанавливаем иконкудля трея
+                    }else{trIcon->setIcon(QIcon::fromTheme("krudiotray-dark-off"+namesvg,QIcon(path+"krudiotray-dark-off"+namesvg+".svg")));} //плеер не играет
                     break;
                 }
             case 1://светлая тема
                 {
                     ui->radioButton->setChecked(true);
                     if(iconTrayEv){
-                        trIcon->setIcon(QIcon::fromTheme("krudio-light-on-tray"+namesvg,QIcon(path+"krudio-light-on-tray"+namesvg+".svg")));  //устанавливаем иконкудля трея
-                    }else{trIcon->setIcon(QIcon::fromTheme("krudio-light-off-tray"+namesvg,QIcon(path+"krudio-light-off-tray"+namesvg+".svg")));} //плеер не играет
+                        trIcon->setIcon(QIcon::fromTheme("krudiotray-light-on"+namesvg,QIcon(path+"krudiotray-light-on"+namesvg+".svg")));  //устанавливаем иконкудля трея
+                    }else{trIcon->setIcon(QIcon::fromTheme("krudiotray-light-off"+namesvg,QIcon(path+"krudiotray-light-off"+namesvg+".svg")));} //плеер не играет
                     break;
                 }
           }
 
+    trIcon->show();  //отображаем объект
     setWindowIcon(QIcon::fromTheme("krudio",QIcon(path+"krudio.svg")));//иконка окна
     if(save){//сохраняем изменения в базу
         QString str;
