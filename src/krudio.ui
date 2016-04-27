@@ -6,21 +6,9 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>250</width>
-    <height>328</height>
+    <width>300</width>
+    <height>329</height>
    </rect>
-  </property>
-  <property name="minimumSize">
-   <size>
-    <width>250</width>
-    <height>328</height>
-   </size>
-  </property>
-  <property name="maximumSize">
-   <size>
-    <width>250</width>
-    <height>328</height>
-   </size>
   </property>
   <property name="windowTitle">
    <string>Krudio</string>
@@ -37,9 +25,9 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
-      <width>250</width>
-      <height>182</height>
+      <y>-1</y>
+      <width>301</width>
+      <height>183</height>
      </rect>
     </property>
     <property name="lineWidth">
@@ -57,7 +45,7 @@
      <rect>
       <x>0</x>
       <y>179</y>
-      <width>250</width>
+      <width>300</width>
       <height>150</height>
      </rect>
     </property>
@@ -111,7 +99,7 @@
      <widget class="QPushButton" name="prevPlay">
       <property name="geometry">
        <rect>
-        <x>5</x>
+        <x>27</x>
         <y>80</y>
         <width>40</width>
         <height>30</height>
@@ -128,7 +116,7 @@
      <widget class="QPushButton" name="pausePlay">
       <property name="geometry">
        <rect>
-        <x>60</x>
+        <x>82</x>
         <y>80</y>
         <width>40</width>
         <height>30</height>
@@ -151,7 +139,7 @@
      <widget class="QPushButton" name="nextPlay">
       <property name="geometry">
        <rect>
-        <x>115</x>
+        <x>137</x>
         <y>80</y>
         <width>40</width>
         <height>30</height>
@@ -168,7 +156,7 @@
      <widget class="QPushButton" name="pausePause">
       <property name="geometry">
        <rect>
-        <x>60</x>
+        <x>82</x>
         <y>80</y>
         <width>40</width>
         <height>30</height>
@@ -191,9 +179,9 @@
      <widget class="QLabel" name="waitMinute">
       <property name="geometry">
        <rect>
-        <x>0</x>
-        <y>123</y>
-        <width>211</width>
+        <x>31</x>
+        <y>120</y>
+        <width>210</width>
         <height>16</height>
        </rect>
       </property>
@@ -215,9 +203,9 @@
      <widget class="QSlider" name="volumeChange">
       <property name="geometry">
        <rect>
-        <x>0</x>
+        <x>25</x>
         <y>120</y>
-        <width>211</width>
+        <width>210</width>
         <height>21</height>
        </rect>
       </property>
@@ -240,7 +228,7 @@
      <widget class="QLabel" name="label_5">
       <property name="geometry">
        <rect>
-        <x>5</x>
+        <x>26</x>
         <y>3</y>
         <width>201</width>
         <height>71</height>
@@ -268,7 +256,7 @@
      <widget class="QPushButton" name="nextPlay_2">
       <property name="geometry">
        <rect>
-        <x>167</x>
+        <x>190</x>
         <y>80</y>
         <width>40</width>
         <height>30</height>
@@ -304,7 +292,7 @@
        <rect>
         <x>10</x>
         <y>30</y>
-        <width>191</width>
+        <width>231</width>
         <height>29</height>
        </rect>
       </property>
@@ -327,7 +315,7 @@
        <rect>
         <x>10</x>
         <y>80</y>
-        <width>191</width>
+        <width>231</width>
         <height>29</height>
        </rect>
       </property>
@@ -350,7 +338,7 @@
        <rect>
         <x>10</x>
         <y>115</y>
-        <width>85</width>
+        <width>50</width>
         <height>25</height>
        </rect>
       </property>
@@ -371,9 +359,9 @@
      <widget class="QPushButton" name="pushButton_3">
       <property name="geometry">
        <rect>
-        <x>117</x>
+        <x>69</x>
         <y>115</y>
-        <width>85</width>
+        <width>50</width>
         <height>25</height>
        </rect>
       </property>
@@ -383,6 +371,41 @@
       <property name="icon">
        <iconset theme="edit-delete">
         <normaloff>.</normaloff>.</iconset>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="saveStation">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>131</x>
+        <y>115</y>
+        <width>50</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset theme="document-save"/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="editStation">
+      <property name="geometry">
+       <rect>
+        <x>191</x>
+        <y>115</y>
+        <width>50</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset theme="document-edit"/>
       </property>
      </widget>
     </widget>
@@ -423,9 +446,9 @@
      <widget class="QSlider" name="horizontalSlider">
       <property name="geometry">
        <rect>
-        <x>13</x>
+        <x>10</x>
         <y>110</y>
-        <width>188</width>
+        <width>221</width>
         <height>21</height>
        </rect>
       </property>
@@ -455,7 +478,7 @@
      <widget class="QRadioButton" name="radioButton_2">
       <property name="geometry">
        <rect>
-        <x>120</x>
+        <x>160</x>
         <y>40</y>
         <width>81</width>
         <height>22</height>

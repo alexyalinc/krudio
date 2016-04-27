@@ -85,6 +85,10 @@ private slots:
 
     void on_nextPlay_2_clicked();
 
+    void on_editStation_released();
+
+    void on_saveStation_released();
+
 private:
     QTimer *ceckBUFFtimer;
     void refreshTable();
