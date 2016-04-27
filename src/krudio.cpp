@@ -91,7 +91,7 @@ Krudio::Krudio(QWidget *parent) :
     ui->prevPlay->setIcon(QIcon::fromTheme("media-skip-backward",QIcon("/usr/share/krudio/icons/media-skip-backward.svg")));
     ui->nextPlay->setIcon(QIcon::fromTheme("media-skip-forward",QIcon("/usr/share/krudio/icons/media-skip-forward.svg")));
     ui->nextPlay_2->setIcon(QIcon::fromTheme("search",QIcon("/usr/share/krudio/icons/search.svg")));
-    ui->pushButton_2->setIcon(QIcon::fromTheme("dialog-ok-apply",QIcon("/usr/share/krudio/icons/dialog-ok-apply.svg")));
+    ui->pushButton_2->setIcon(QIcon::fromTheme("list-add",QIcon("/usr/share/krudio/icons/list-add.svg")));
     ui->pushButton_3->setIcon(QIcon::fromTheme("edit-delete",QIcon("/usr/share/krudio/icons/edit-delete.svg")));
 
     ui->pausePause->hide();//скрываем кнопку паузы
