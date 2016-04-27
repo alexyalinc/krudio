@@ -13,10 +13,10 @@ clean:
 
 install:
 	mkdir -p $(datadir)/krudio/icons
-	install -Dm644 src/data/icons/krudio.svg $(datadir)/icons/hicolor/48x48/apps/krudio.svg
 	install -Dm644 src/data/icons/*.svg $(datadir)/krudio/icons
 	install -Dm755 src/data/krudio.desktop $(datadir)/applications/krudio.desktop
 	install -Dm755 src/krudio $(bindir)/krudio
+	ln -s $(datadir)/krudio/icons/krudio.svg $(datadir)/icons/hicolor/48x48/apps/krudio.svg
 	ln -s $(datadir)/krudio/icons/krudiotray-dark-off16.svg $(datadir)/icons/hicolor/16x16/status/krudiotray-dark-off16.svg
 	ln -s $(datadir)/krudio/icons/krudiotray-dark-on16.svg $(datadir)/icons/hicolor/16x16/status/krudiotray-dark-on16.svg
 	ln -s $(datadir)/krudio/icons/krudiotray-light-off16.svg $(datadir)/icons/hicolor/16x16/status/krudiotray-light-off16.svg
@@ -32,9 +32,9 @@ install:
 
 uninstall: 
 	rm -rf $(datadir)/krudio
-	rm $(datadir)/icons/hicolor/48x48/apps/krudio.svg
 	rm $(datadir)/applications/krudio.desktop
 	rm $(bindir)/krudio
+	rm $(datadir)/icons/hicolor/48x48/apps/krudio.svg
 	rm $(datadir)/icons/hicolor/16x16/status/krudiotray*
 	rm $(datadir)/icons/hicolor/22x22/status/krudiotray*
 	rm $(datadir)/icons/hicolor/24x24/status/krudiotray*
