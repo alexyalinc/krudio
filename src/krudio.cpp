@@ -13,7 +13,7 @@
 QString tableStationsName = "stations";//Имя таблицы со станциями
 QString tableSettingName = "settings";//Имя таблицы с настройками
 QString metaDataTitle="Название трека";
-int curretPlay = -1;//Номер строки, котороя сейчас воспроизводится
+int curretPlay = 0;//Номер строки, котороя сейчас воспроизводится
 QMediaPlayer*player;//Плеер
 QTableWidgetItem *itemRow;//Headers
 QSystemTrayIcon *trIcon;//Иконка в трее
@@ -23,8 +23,8 @@ bool firstPlay=true;//Первое воспроизведение или нет
 bool playPause=false;//Воспроизводится или нет
 bool iconTrayEv=false;//Иконка в трее не активная
 bool closeEv=false;
-int  countRow=-1;//Количество строк в таблице
-int  currentRow=-1;//Активная строка
+int  countRow=0;//Количество строк в таблице
+int  currentRow=0;//Активная строка
 int  currentColorNumb;//Текущий цвет иконок
 int  currentsizeIcon;//Текущий размер значков
 int  currentEditRow=-1;//Редактируемая строчка
@@ -93,6 +93,8 @@ Krudio::Krudio(QWidget *parent) :
     ui->nextPlay_2->setIcon(QIcon::fromTheme("search",QIcon("/usr/share/krudio/icons/search.svg")));
     ui->pushButton_2->setIcon(QIcon::fromTheme("list-add",QIcon("/usr/share/krudio/icons/list-add.svg")));
     ui->pushButton_3->setIcon(QIcon::fromTheme("edit-delete",QIcon("/usr/share/krudio/icons/edit-delete.svg")));
+    ui->editStation->setIcon(QIcon::fromTheme("document-edit",QIcon("/usr/share/krudio/icons/document-edit.svg")));
+    ui->saveStation->setIcon(QIcon::fromTheme("document-save",QIcon("/usr/share/krudio/icons/document-save.svg")));
 
     ui->pausePause->hide();//скрываем кнопку паузы
     ui->waitMinute->hide();//Скрываем label загрузки буфера
@@ -298,7 +300,7 @@ void Krudio::repeater(){
         ui->volumeChange->hide();
         player->pause();
         itemRow = new QTableWidgetItem();
-        itemRow->setIcon(QIcon::fromTheme("media-playback-pause",QIcon("/usr/share/krudio/icons/media-playback-start.svg")));
+        itemRow->setIcon(QIcon::fromTheme("media-playback-pause",QIcon("/usr/share/krudio/icons/media-playback-pause.svg")));
         ui->tableWidget->setVerticalHeaderItem(curretPlay,itemRow);
         if(blockNumb==1){ceckBUFFtimer->setInterval(5000);}
         else if(blockNumb==2){ceckBUFFtimer->setInterval(10000);}
@@ -370,7 +372,6 @@ void Krudio::refreshTable(){
         url = a_query.value(rec.indexOf("url")).toString();
         ui->tableWidget->insertRow(indexStr);
         itemRow = new QTableWidgetItem();
-        itemRow->setIcon(QIcon::fromTheme("media-playback-pause",QIcon("/usr/share/krudio/icons/media-playback-pause.svg")));
         ui->tableWidget->setVerticalHeaderItem(indexStr,itemRow);
         itemRow = new QTableWidgetItem(name);
         ui->tableWidget->setItem(indexStr,0,itemRow);
@@ -385,33 +386,21 @@ void Krudio::refreshTable(){
     //Визуальная часть текущего трека)
     for(int i=0;i<=countRow;i++){
         itemRow = new QTableWidgetItem();
-        itemRow->setIcon(QIcon::fromTheme("media-playback-pause",QIcon("/usr/share/krudio/icons/media-playback-pause.svg")));
         ui->tableWidget->setVerticalHeaderItem(i,itemRow);
     }
     //Стобец на всю ширину таблицы
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
-    if(curretPlay==-1){
-        //Выделяем текущую строку
-        if(currentEditId!=-1){
-            curretPlay=currentEditRow;
-            ui->tableWidget->selectRow(currentEditId);
+    if(curretPlay<=countRow){
+        if(playPause){
+            itemRow = new QTableWidgetItem();
+            itemRow->setIcon(QIcon::fromTheme("media-playback-start",QIcon("/usr/share/krudio/icons/media-playback-start.svg")));
+            ui->tableWidget->setVerticalHeaderItem(curretPlay,itemRow);
         }else{
-            if(countRow<=currentRow){
-                curretPlay=currentRow-1;
-                ui->tableWidget->selectRow(currentRow-1);
-            }else{
-                ui->tableWidget->selectRow(currentRow);
-            }
+            itemRow = new QTableWidgetItem();
+            itemRow->setSizeHint(QSize(24,24));
+            ui->tableWidget->setVerticalHeaderItem(curretPlay,itemRow);
         }
-    }else{
-        if(curretPlay<=countRow){
-            if(playPause){
-                itemRow = new QTableWidgetItem();
-                itemRow->setIcon(QIcon::fromTheme("media-playback-start",QIcon("/usr/share/krudio/icons/media-playback-pause.svg")));
-                ui->tableWidget->setVerticalHeaderItem(curretPlay,itemRow);
-            }
-            ui->tableWidget->selectRow(curretPlay);
-        }
+        ui->tableWidget->selectRow(curretPlay);
     }
 
 }
@@ -509,7 +498,6 @@ void Krudio::currPlayOrNextBack(int check){
     //Визуальная часть текущего трека)
     for(int i=0;i<=countRow;i++){
         itemRow = new QTableWidgetItem();
-        itemRow->setIcon(QIcon::fromTheme("media-playback-pause",QIcon("/usr/share/krudio/icons/media-playback-pause.svg")));
         ui->tableWidget->setVerticalHeaderItem(i,itemRow);
     }
     if(playPause){
@@ -678,7 +666,10 @@ void Krudio::on_saveStation_released()
     ui->pushButton_3->setDisabled(false);
     ui->saveStation->setDisabled(true);
     refreshTable();//Обновляем содержимое таблицы
-    currPlayOrNextBack(3);
-    currPlayOrNextBack(3);
+
+
+        if(playPause){
+            currPlayOrNextBack(3);
+        }
     }
 }
