@@ -313,7 +313,7 @@ void Krudio::repeater(){
                       ui->label_5->setText(player->metaData(QMediaMetaData::Title).toString());
                       if(player->metaData(QMediaMetaData::Title).toString()!=""){
                           QString str1 =player->metaData(QMediaMetaData::Title).toString();
-                          QString str = "notify-send 'Сейчас играет' '"+str1+"'  -t 5000";
+                          QString str = "notify-send 'Krudio' '"+str1+"'  -t 5000";
                           QByteArray byteArray = str.toUtf8();
                           char* data = byteArray.data();
                           system(data);
