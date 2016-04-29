@@ -102,7 +102,7 @@
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="icon">
-      <iconset theme="next">
+      <iconset theme="media-playback-start">
        <normaloff>.</normaloff>.</iconset>
      </attribute>
      <attribute name="title">

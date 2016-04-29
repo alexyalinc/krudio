@@ -61,7 +61,7 @@ Krudio::Krudio(QWidget *parent) :
 {
     ui->setupUi(this);
     //поворачиваем иконки табов
-    QIcon icon = QIcon::fromTheme("arrow-right",QIcon("/usr/share/krudio/icons/arrow-right.svg")); // use your method to retrieve the QIcon object
+    QIcon icon = QIcon::fromTheme("media-playback-start",QIcon("/usr/share/krudio/icons/media-playback-start.svg")); // use your method to retrieve the QIcon object
     QImage srcImg(icon.pixmap(22,22).toImage());
     QPoint center = srcImg.rect().center();
     QMatrix matrix;
