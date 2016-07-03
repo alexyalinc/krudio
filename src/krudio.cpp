@@ -103,9 +103,11 @@ Krudio::Krudio(QWidget *parent) :
     //Иконка в трее
     trIcon = new QSystemTrayIcon();  //инициализируем объект
     //При клике сворачивать или разворачивать окно
-    connect(trIcon,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),this,SLOT(showHide(QSystemTrayIcon::ActivationReason)));
+    //connect(trIcon,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),this,SLOT(showHide(QSystemTrayIcon::ActivationReason)));
+    connect(trIcon,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),this,SLOT(playorpause(QSystemTrayIcon::ActivationReason)));
     //Создаем контекстное меню для иконки в трее, чтобы закрывать программу
     QMenu*   pmnu   = new QMenu("&Menu");
+    pmnu->addAction("&Show/Hide", this, SLOT(showHide()));
     pmnu->addAction("&Exit", this, SLOT(closeEV()));
     trIcon->setContextMenu(pmnu);
     //Иконка в трее
@@ -185,6 +187,12 @@ Krudio::Krudio(QWidget *parent) :
 
     ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);//Включаем запрет на редактирование таблицы
     refreshTable();//Обновляем содержимое таблицы
+}
+
+void Krudio::playorpause(QSystemTrayIcon::ActivationReason r){
+    if (r==QSystemTrayIcon::Trigger){  //если нажато левой кнопкой продолжаем
+        currPlayOrNextBack(0);
+    }
 }
 
 Krudio::~Krudio()
@@ -310,12 +318,12 @@ void Krudio::repeater(){
     if (player->isMetaDataAvailable())
     {
         if(metaDataTitle != player->metaData(QMediaMetaData::Title).toString()){
-                      ui->label_5->setText(player->metaData(QMediaMetaData::Title).toString());
                       if(player->metaData(QMediaMetaData::Title).toString()!=""){
                           QString str1 =player->metaData(QMediaMetaData::Title).toString();
                           QString str = "notify-send 'Krudio' '"+str1+"'  -t 5000";
                           QByteArray byteArray = str.toUtf8();
-                          char* data = byteArray.data();
+                          char* data = byteArray.data();                          
+                          ui->label_5->setText(player->metaData(QMediaMetaData::Title).toString().toUtf8());
                           system(data);
                       }else {
                           ui->label_5->setText("Название трека");
@@ -328,14 +336,12 @@ void Krudio::repeater(){
 }
 
 /*////////////////////////////////////////////Показать/Скрыть в трее//////////////////////////////////////////////*/
-void Krudio::showHide(QSystemTrayIcon::ActivationReason r) {
-    if (r==QSystemTrayIcon::Trigger){  //если нажато левой кнопкой продолжаем
+void Krudio::showHide() {
         if (!this->isVisible()) {  //если окно было не видимо - отображаем его
             this->show();
         } else {
             this->hide();  //иначе скрываем
         }
-    }
 }
 /*////////////////////////////////////////////Refresh Table//////////////////////////////////////////////*/
 void Krudio::refreshTable(){

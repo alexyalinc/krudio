@@ -39,6 +39,9 @@ class Krudio : public QMainWindow
 public:
     explicit Krudio(QWidget *parent = 0);
     ~Krudio();
+public slots:
+
+    void currPlayOrNextBack(int check);
 
 private slots:
     void closeEV();
@@ -51,9 +54,9 @@ private slots:
 
     void setcolorIcon(int colorNumb,bool save);
 
-    void showHide(QSystemTrayIcon::ActivationReason r);
+    void playorpause(QSystemTrayIcon::ActivationReason r);
 
-    void currPlayOrNextBack(int check);
+    void showHide();
 
     void delRowTable(int id);
 
