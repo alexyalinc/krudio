@@ -56,7 +56,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>179</y>
+      <y>180</y>
       <width>300</width>
       <height>150</height>
      </rect>
@@ -439,7 +439,7 @@
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>191</width>
+        <width>121</width>
         <height>17</height>
        </rect>
       </property>
@@ -451,7 +451,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>80</y>
+        <y>86</y>
         <width>191</width>
         <height>17</height>
        </rect>
@@ -498,7 +498,7 @@
      <widget class="QRadioButton" name="radioButton_2">
       <property name="geometry">
        <rect>
-        <x>160</x>
+        <x>120</x>
         <y>40</y>
         <width>81</width>
         <height>22</height>
@@ -512,6 +512,32 @@
       </property>
       <property name="autoExclusive">
        <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>86</y>
+        <width>101</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string comment="The theme of the icons">Запуск в трее</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>84</y>
+        <width>21</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>

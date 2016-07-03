@@ -58,6 +58,8 @@ private slots:
 
     void showHide();
 
+    void currtrayRun(int run);
+
     void delRowTable(int id);
 
     void addRowTable(QString name, QString url);
@@ -91,6 +93,8 @@ private slots:
     void on_editStation_released();
 
     void on_saveStation_released();
+
+    void on_checkBox_clicked(bool checked);
 
 private:
     QTimer *ceckBUFFtimer;

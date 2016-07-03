@@ -145,7 +145,8 @@ Krudio::Krudio(QWidget *parent) :
             id="";
     int     value,
             colorIcons=-1,// -1 Настроек нет
-            sizeIcon=-1;// -1 Настроек нет
+            sizeIcon=-1,// -1 Настроек нет
+            trayRun=-1;
     while (a_query.next()) {
         id = a_query.value(rec.indexOf("id")).toString();
         setting = a_query.value(rec.indexOf("setting")).toString();
@@ -157,6 +158,10 @@ Krudio::Krudio(QWidget *parent) :
         //Если есть настройки размера иконок, то добавляем в переменную значение
         if(setting=="iconsize"){
             sizeIcon=value;
+        }
+        //Если есть настройка запуск программы в трее
+        if(setting=="trayrun"){
+            trayRun=value;
         }
     }
     //Сохраняем настройки если их нет
@@ -171,6 +176,15 @@ Krudio::Krudio(QWidget *parent) :
     else{
         setsizeIcon(sizeIcon,false);
         currentsizeIcon=sizeIcon;
+    }
+    if(trayRun==-1){
+        str_insert = "INSERT INTO "+tableSettingName+" (id, setting, value) VALUES (NULL, '%1', %2);";
+        str = str_insert.arg("trayrun").arg(0);//Запуск в трее
+        b = a_query.exec(str);
+        if (!b) {qDebug() << "Данные не вставляются";}
+    }
+    else{
+        currtrayRun(trayRun);
     }
     if(colorIcons==-1){
         //Добавляем настройку цвета по умолчанию
@@ -193,6 +207,25 @@ void Krudio::playorpause(QSystemTrayIcon::ActivationReason r){
     if (r==QSystemTrayIcon::Trigger){  //если нажато левой кнопкой продолжаем
         currPlayOrNextBack(0);
     }
+}
+
+void Krudio::currtrayRun(int run){
+    qDebug() << run;
+    if(run==0){
+        this->show();
+        ui->checkBox->setChecked(0);
+    }
+    else{
+        ui->checkBox->setChecked(1);
+    }
+    QString str;
+    QSqlQuery a_query;
+    bool b;
+    //Вставить значения
+    QString str_insert = "UPDATE "+tableSettingName+" SET value = %1 WHERE setting ='%2';";
+    str = str_insert.arg(run).arg("trayrun");
+    b = a_query.exec(str);
+    if (!b) {qDebug() << "Данные не сохнаняются";}
 }
 
 Krudio::~Krudio()
@@ -322,8 +355,10 @@ void Krudio::repeater(){
                           QString str1 =player->metaData(QMediaMetaData::Title).toString();
                           QString str = "notify-send 'Krudio' '"+str1+"'  -t 5000";
                           QByteArray byteArray = str.toUtf8();
-                          char* data = byteArray.data();                          
-                          ui->label_5->setText(player->metaData(QMediaMetaData::Title).toString().toUtf8());
+                          QByteArray byteArray2 = str1.toUtf8();
+                          char* data = byteArray.data();
+                          char* data2 = byteArray2.data();
+                          ui->label_5->setText(data2);
                           system(data);
                       }else {
                           ui->label_5->setText("Название трека");
@@ -331,7 +366,6 @@ void Krudio::repeater(){
                       metaDataTitle=player->metaData(QMediaMetaData::Title).toString();
           }
     }
-
 
 }
 
@@ -679,3 +713,12 @@ void Krudio::on_saveStation_released()
         }
     }
 }
+
+
+void Krudio::on_checkBox_clicked(bool checked)
+{
+    int i;
+    if(checked){i=1;} else{i=0;}
+    currtrayRun(i);
+}
+
