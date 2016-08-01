@@ -21,3 +21,6 @@ Radio tray for linux on QT
 
 # Run this app in menu or terminal
 - $ krudio
+
+# DONATE
+- https://loast.github.io/
