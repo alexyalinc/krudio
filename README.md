@@ -9,6 +9,10 @@ Radio tray for linux on QT
 # Install from AUR
 - $ yaourt -S krudio-git
 
+# Install for Ubuntu and openSUSE
+- openSUSE package: https://software.opensuse.org/download.html?project=home%3ADarkSS&package=krudio
+- Ubuntu package: https://software.opensuse.org/download.html?project=home%3ADarkSS%3Adeb&package=krudio
+
 # Install and run
 - $ git clone https://github.com/loast/krudio.git
 - $ cd krudio
