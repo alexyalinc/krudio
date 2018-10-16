@@ -1,6 +1,6 @@
 # krudio
-Radio tray for linux on QT
-U can use new Krudio based on C++ and QML:
+- Radio tray for linux on QT
+- U can use new Krudio based on C++ and QML:
 https://github.com/loast/krudio-qml
 
 # Screenshots
