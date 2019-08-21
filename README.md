@@ -23,6 +23,3 @@ https://github.com/loast/krudio-qml
 
 # Run this app in menu or terminal
 - $ krudio
-
-# DONATE
-- https://loast.github.io/
